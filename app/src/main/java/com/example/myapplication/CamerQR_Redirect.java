@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -119,9 +120,11 @@ public class CamerQR_Redirect extends AppCompatActivity {
 
 
                 if(QRCode.size()>0){
-                    text.setText(QRCode.valueAt(0).displayValue);
+                    //text.setText(QRCode.valueAt(0).displayValue);
+                    String link = QRCode.valueAt(0).displayValue;
                     Intent i = new Intent(activity, Page.class);
-
+                    i.putExtra("link",link);
+                    Log.i("petQR", link);
                     startActivity(i);
                 }
             }
